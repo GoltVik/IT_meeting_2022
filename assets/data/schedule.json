@@ -1,0 +1,188 @@
+{
+  "days": [
+    {
+      "title": "Day 1",
+      "date": "2022-07-05T00:00:00Z",
+      "sessions": [
+        {
+          "start": "2022-07-05T09:00:00Z",
+          "end": "2022-07-05T10:00:00Z",
+          "type": "sessions",
+          "title": "Opening Session",
+          "presenters": [
+            "Christian Demler"
+          ],
+          "rooms": [
+            "Chianti"
+          ]
+        },
+        {
+          "start": "2022-07-05T10:00:00Z",
+          "end": "2022-07-05T10:15:00Z",
+          "title": "Coffee break",
+          "type": "coffee_break"
+        },
+        {
+          "start": "2022-07-05T10:15:00Z",
+          "end": "2022-07-05T12:00:00Z",
+          "type": "sessions",
+          "title": "Team session 1",
+          "rooms": [
+            "Chianti",
+            "Ancona",
+            "Genua",
+            "Bolgheri",
+            "Elba"
+          ]
+        },
+        {
+          "start": "2022-07-05T12:00:00Z",
+          "end": "2022-07-05T13:30:00Z",
+          "type": "food_break",
+          "title": "Lunch",
+          "rooms": [
+            "Restaurant"
+          ]
+        },
+        {
+          "start": "2022-07-05T13:30:00Z",
+          "end": "2022-07-05T14:30:00Z",
+          "type": "sessions",
+          "title": "Team session 2",
+          "presenters": [
+            "New Work Team"
+          ],
+          "rooms": [
+            "Chianti"
+          ]
+        },
+        {
+          "start": "2022-07-05T14:30:00Z",
+          "end": "2022-07-05T15:30:00Z",
+          "type": "sessions",
+          "title": "Presentation",
+          "presenters": [
+            "Helen Arnold"
+          ],
+          "rooms": [
+            "Chianti"
+          ]
+        },
+        {
+          "start": "2022-07-05T15:30:00Z",
+          "end": "2022-07-05T18:30:00Z",
+          "type": "sessions",
+          "title": "Let´s get to know each other - Let us surprise you",
+          "rooms": [
+            "La Sala Party Room"
+          ]
+        },
+        {
+          "start": "2022-07-05T18:30:00Z",
+          "end": "2022-07-05T20:30:00Z",
+          "type": "food_break",
+          "title": "Dinner",
+          "rooms": [
+            "Restaurant"
+          ]
+        },
+        {
+          "start": "2022-07-05T20:30:00Z",
+          "title": "Get together",
+          "type": "day_end",
+          "rooms": [
+            "La Sala Party Room"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Day 2",
+      "date": "2022-07-06T00:00:00Z",
+      "sessions": [
+        {
+          "start": "2022-07-06T09:00:00Z",
+          "end": "2022-07-06T11:00:00Z",
+          "type": "sessions",
+          "title": "Team session 3",
+          "rooms": [
+            "Chianti",
+            "Ancona",
+            "Genua",
+            "Bolgheri",
+            "Elba"
+          ]
+        },
+        {
+          "start": "2022-07-06T11:00:00Z",
+          "end": "2022-07-06T11:15:00Z",
+          "title": "Coffee break",
+          "type": "coffee_break"
+        },
+        {
+          "start": "2022-07-06T11:15:00Z",
+          "end": "2022-07-06T12:15:00Z",
+          "type": "sessions",
+          "title": "AGRANA IT Strategy",
+          "presenters": [
+            "Christian Stuppan"
+          ],
+          "rooms": [
+            "Chianti"
+          ]
+        },
+        {
+          "start": "2022-07-06T12:15:00Z",
+          "end": "2022-07-06T13:30:00Z",
+          "type": "food_break",
+          "title": "Lunch",
+          "rooms": [
+            "Restaurant"
+          ]
+        },
+        {
+          "start": "2022-07-06T13:30:00Z",
+          "end": "2022-07-06T14:30:00Z",
+          "type": "sessions",
+          "title": "Team Session Review",
+          "rooms": [
+            "Chianti"
+          ]
+        },
+        {
+          "start": "2022-07-06T14:30:00Z",
+          "end": "2022-07-06T15:00:00Z",
+          "type": "sessions",
+          "title": "Wrap-up",
+          "rooms": [
+            "Chianti"
+          ]
+        },
+        {
+          "start": "2022-07-06T15:00:00Z",
+          "end": "2022-07-06T15:15:00Z",
+          "title": "Coffee break",
+          "type": "coffee_break"
+        },
+        {
+          "start": "2022-07-06T15:15:00Z",
+          "end": "2022-07-06T17:30:00Z",
+          "type": "sessions",
+          "title": "Working Sessions of international teams",
+          "rooms": [
+            "Chianti",
+            "Ancona",
+            "Genua",
+            "Bolgheri",
+            "Elba"
+          ]
+        },
+        {
+          "start": "2022-07-06T17:30:00Z",
+          "title": "Departure",
+          "type": "event_end"
+        }
+      ]
+    }
+  ]
+}

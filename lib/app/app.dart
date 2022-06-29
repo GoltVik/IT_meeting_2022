@@ -9,9 +9,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'IT Meeting 2022',
-      theme: ThemeData(
-        primarySwatch: const Color(0xFF076FBD).material,
+      theme: ThemeData.light().copyWith(
+        primaryColor: const Color(0xFF076FBD).material,
         scaffoldBackgroundColor: const Color(0xFFF0F4F6),
+        brightness: Brightness.light,
+        tabBarTheme: const TabBarTheme(
+          indicatorSize: TabBarIndicatorSize.tab,
+          labelColor: Colors.black,
+          unselectedLabelColor: Colors.grey,
+        ),
       ),
       home: const HomePage(title: 'Schedule'),
     );
