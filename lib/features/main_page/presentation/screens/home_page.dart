@@ -13,6 +13,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Future<Event> loadAsset(BuildContext context) async {
+    final bundle = DefaultAssetBundle.of(context);
+    final file = await bundle.loadString('assets/data/schedule.json');
+    return Event.fromJson(jsonDecode(file));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
