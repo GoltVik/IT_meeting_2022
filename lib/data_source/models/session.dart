@@ -10,16 +10,18 @@ class Session {
   final SessionType type;
   final DateTime start;
   final DateTime? end;
-  final List<String>? presenters;
-  final List<String>? rooms;
+  @JsonKey(defaultValue: [])
+  final List<String> presenters;
+  @JsonKey(defaultValue: [])
+  final List<String> rooms;
 
   Session({
     required this.title,
     required this.type,
     required this.start,
     this.end,
-    this.presenters,
-    this.rooms,
+    required this.presenters,
+    required this.rooms,
   });
 
   factory Session.fromJson(Map<String, dynamic> json) =>

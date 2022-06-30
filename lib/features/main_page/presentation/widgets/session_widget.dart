@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:it_meeting_2022/data_source/models/session.dart';
 
 import '../../../../data_source/models/session_type.dart';
@@ -13,12 +14,16 @@ class SessionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        maxHeight: session.type == SessionType.sessions ? 140 : 90,
+        maxHeight: session.type == SessionType.sessions ? 140 : 100,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          TimeLineWidget(session.start, session.end),
+          TimeLineWidget(
+            session.start,
+            session.end,
+            last: session.type == SessionType.event_end,
+          ),
           Expanded(
             child: () {
               switch (session.type) {
@@ -45,44 +50,116 @@ class SessionWidget extends StatelessWidget {
   }
 
   Widget _sessionElement(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              session.title,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-          ],
-        ),
+    return _SessionBackground(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            session.title,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            session.presenters.join(','),
+            style: Theme.of(context).textTheme.caption,
+          ),
+          const Spacer(),
+          Wrap(
+            alignment: WrapAlignment.end,
+            spacing: 4.0,
+            runSpacing: 2.0,
+            children: session.rooms
+                .map((e) => RawChip(
+                      label: Text(e),
+                      backgroundColor:
+                          Theme.of(context).colorScheme.primary.withOpacity(.3),
+                    ))
+                .toList(),
+          )
+        ],
       ),
     );
   }
 
   Widget _foodTimeElement(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(Icons.lunch_dining_outlined),
-        Text(session.title),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Row(
+        children: [
+          const Icon(Icons.restaurant, size: 35),
+          const SizedBox(width: 8),
+          Text(
+            session.title,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+        ],
+      ),
     );
   }
 
   Widget _coffeeTimeElement(BuildContext context) {
-    return const Icon(Icons.coffee);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Row(
+        children: [
+          const Icon(Icons.coffee_maker_outlined, size: 35),
+          const SizedBox(width: 8),
+          Text(
+            session.title,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _continuationElement(BuildContext context) {
-    return SizedBox.shrink();
+    return _SessionBackground(
+      child: Center(
+        child: Text(
+          session.title,
+          style: Theme.of(context).textTheme.titleLarge,
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
   }
 
   Widget _endEventElement(BuildContext context) {
-    return SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            session.title,
+            style: Theme.of(context).textTheme.titleMedium,
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            'Thank you to be there\nSee you next year!',
+            style: GoogleFonts.indieFlower().copyWith(fontSize: 20),
+            textAlign: TextAlign.center,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _SessionBackground extends StatelessWidget {
+  final Widget? child;
+
+  const _SessionBackground({Key? key, this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 8.0, left: 16.0),
+      color: Theme.of(context).colorScheme.primary.withOpacity(.06),
+      padding: const EdgeInsets.only(
+          left: 16.0, right: 16.0, top: 16.0, bottom: 8.0),
+      child: child,
+    );
   }
 }
