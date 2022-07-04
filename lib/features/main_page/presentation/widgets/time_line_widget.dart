@@ -18,23 +18,25 @@ class TimeLineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 70,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          _Point(date: range.start),
-          if (!last)
-            Expanded(
-              child: VerticalDivider(
-                width: 10,
-                thickness: 2,
-                color: Theme.of(context).colorScheme.secondary,
+    return LayoutBuilder(builder: (context, constrains) {
+      return SizedBox(
+        width: 50,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            _Point(date: range.start),
+            if (!last)
+              Expanded(
+                child: VerticalDivider(
+                  width: 10,
+                  thickness: 2,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
-            ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    });
   }
 }
 

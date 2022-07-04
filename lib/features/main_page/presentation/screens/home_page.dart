@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:it_meeting_2022/data_source/models/event.dart';
 
 import '../widgets/day_schedule_widget.dart';
@@ -42,19 +41,22 @@ class HomePage extends StatelessWidget {
 class ResponsibleScheduleWidget extends StatelessWidget {
   final Event event;
 
-  const ResponsibleScheduleWidget({Key? key, required this.event})
-      : super(key: key);
+  ResponsibleScheduleWidget({Key? key, required this.event}) : super(key: key);
 
   Widget _sliverAppBar(BuildContext context, {List<Widget>? tabs}) {
     return SliverAppBar(
       systemOverlayStyle: SystemUiOverlayStyle.light,
       backgroundColor: Colors.white,
-      expandedHeight: 220,
+      expandedHeight: tabs == null ? kToolbarHeight : 220,
       pinned: true,
-      // snap: true,
-      // floating: true,
-      flexibleSpace: SafeArea(
-        child: Center(child: Image.asset('assets/images/header.jpg')),
+      snap: true,
+      floating: true,
+      flexibleSpace: FlexibleSpaceBar(
+        centerTitle: false,
+        titlePadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        title: tabs == null ? Image.asset('assets/images/header.png') : null,
+        background:
+            tabs == null ? null : Image.asset('assets/images/banner.png'),
       ),
       bottom: tabs == null
           ? null
@@ -73,33 +75,29 @@ class ResponsibleScheduleWidget extends StatelessWidget {
         case Orientation.portrait:
           return DefaultTabController(
             length: event.days.length,
-            child: CustomScrollView(
-              slivers: [
-                _sliverAppBar(
-                  context,
-                  tabs: event.days.map((e) => Tab(text: e.title)).toList(),
-                ),
-                SliverFillRemaining(
-                  child: TabBarView(
-                    children: event.days.map(DayScheduleWidget.new).toList(),
+            child: NestedScrollView(
+              headerSliverBuilder: (context, _) {
+                return [
+                  _sliverAppBar(
+                    context,
+                    tabs: event.days.map((e) => Tab(text: e.title)).toList(),
                   ),
-                )
-              ],
+                ];
+              },
+              body: TabBarView(
+                children: event.days.map(DayScheduleWidget.new).toList(),
+              ),
             ),
           );
         case Orientation.landscape:
-          return CustomScrollView(
-            slivers: [
-              _sliverAppBar(context),
-              SliverFillRemaining(
-                child: Row(
-                  children: event.days
-                      .map(DayScheduleWidget.new)
-                      .map((e) => Expanded(child: e))
-                      .toList(),
-                ),
-              )
-            ],
+          return NestedScrollView(
+            headerSliverBuilder: (context, _) => [_sliverAppBar(context)],
+            body: Row(
+              children: event.days
+                  .map(DayScheduleWidget.new)
+                  .map((e) => Expanded(child: e))
+                  .toList(),
+            ),
           );
       }
     });

@@ -14,7 +14,7 @@ class SessionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        maxHeight: session.type == SessionType.sessions ? 140 : 100,
+        maxHeight: session.type == SessionType.sessions ? 195 : 100,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -67,7 +67,6 @@ class SessionWidget extends StatelessWidget {
           Wrap(
             alignment: WrapAlignment.end,
             spacing: 4.0,
-            runSpacing: 2.0,
             children: session.rooms
                 .map((e) => RawChip(
                       label: Text(e),
