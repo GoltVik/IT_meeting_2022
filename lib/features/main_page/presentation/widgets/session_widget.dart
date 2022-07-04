@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:it_meeting_2022/data_source/models/session.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../../data_source/models/session_type.dart';
 import 'time_line_widget.dart';
@@ -54,9 +55,24 @@ class SessionWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            session.title,
-            style: Theme.of(context).textTheme.titleLarge,
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  session.title,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+              Wrap(
+                children: session.presentation
+                    .map(
+                      (e) => IconButton(
+                          onPressed: () => launchUrlString(e),
+                          icon: const Icon(Icons.link_rounded)),
+                    )
+                    .toList(),
+              )
+            ],
           ),
           const SizedBox(height: 4),
           Text(

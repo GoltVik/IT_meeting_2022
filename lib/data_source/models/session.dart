@@ -13,6 +13,8 @@ class Session {
   @JsonKey(defaultValue: [])
   final List<String> presenters;
   @JsonKey(defaultValue: [])
+  final List<String> presentation;
+  @JsonKey(defaultValue: [])
   final List<String> rooms;
 
   Session({
@@ -21,6 +23,7 @@ class Session {
     required this.start,
     this.end,
     required this.presenters,
+    required this.presentation,
     required this.rooms,
   });
 
