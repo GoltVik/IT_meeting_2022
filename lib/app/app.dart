@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'IT Meeting 2022',
+      title: 'Network IT 2022',
       theme: ThemeData.light().copyWith(
         primaryColor: const Color(0xFF076FBD).material,
         scaffoldBackgroundColor: const Color(0xFFF0F4F6),
