@@ -96,6 +96,9 @@
           "end": "2022-07-05T20:30:00Z",
           "type": "food_break",
           "title": "Dinner",
+          "presentation": [
+            "https://www.menti.com/xwgx7p3pn5",
+          ],
           "rooms": [
             "Restaurant"
           ]
